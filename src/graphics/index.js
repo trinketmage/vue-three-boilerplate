@@ -1,5 +1,4 @@
 import {
-  Vector2,
   WebGLRenderer,
   Scene,
   sRGBEncoding,
