@@ -31,7 +31,9 @@ class Common {
     this.renderer.setPixelRatio(Device.pixelRatio);
   }
 
-  render() { }
+  render() {
+    this.renderer.render(this.scene, this.camera);
+  }
 
   dispose() {
     this.renderer.dispose();

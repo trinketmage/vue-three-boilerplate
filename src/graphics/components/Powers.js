@@ -4,9 +4,10 @@ import {
   Mesh,
 } from "three";
 
+import Common from "@/graphics/Common";
+
 export default class {
-  constructor({ scene }) {
-    this.scene = scene;
+  constructor() {
     this.init();
   }
   init() {
@@ -14,7 +15,7 @@ export default class {
     const material = new MeshBasicMaterial();
 
     this.mesh = new Mesh( geometry, material );
-    this.scene.add( this.mesh );
+    Common.scene.add( this.mesh );
   }
   render() {
     this.mesh.rotation.x += 0.01;
@@ -23,7 +24,7 @@ export default class {
   dispose() {
     this.mesh.geometry.dispose();
     this.mesh.material.dispose();
-    this.scene.remove(this.mesh);
+    Common.scene.remove(this.mesh);
   }
   resize() {}
 }

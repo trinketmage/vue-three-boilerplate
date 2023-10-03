@@ -41,7 +41,7 @@ export default class PostProcessing {
   dispose() {
     this.composer.reset();
   }
-  handleResize() {
+  resize() {
     const { width, height } = Device.viewport;
     this.composer.setSize(width, height);
     this.mainPass.material.uniforms.resolution.value.set(width * Device.pixelRatio, height * Device.pixelRatio);
