@@ -21,8 +21,9 @@ export default class {
     this.mesh.rotation.y += 0.025;
   }
   dispose() {
-    this.stars.geometry.dispose();
-    this.stars.material.dispose();
+    this.mesh.geometry.dispose();
+    this.mesh.material.dispose();
+    this.scene.remove(this.mesh);
   }
   resize() {}
 }
