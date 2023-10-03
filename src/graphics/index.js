@@ -25,8 +25,6 @@ import settings from "./config";
 export default class {
   constructor({ canvas, initScene = -1 }) {
     Input.init();
-    settings.mouse = new Vector2(0, 0);
-    // settings.mouse3d = _ray.origin;
     settings.idx = initScene;
 
     settings.sizes = {
@@ -42,7 +40,6 @@ export default class {
     };
     this.components = {};
 
-    this.targetMouse = new Vector2(0, 0);
     this.renderer = new WebGLRenderer({
       canvas: canvas,
       alpha: false,
