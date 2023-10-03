@@ -38,9 +38,9 @@ class Common {
   }
 
   resize() {
-
     Device.viewport.width = this.renderer.domElement.parentElement.offsetWidth;
     Device.viewport.height = this.renderer.domElement.parentElement.offsetHeight;
+
     this.camera.aspect =
       Device.viewport.width / Device.viewport.height;
     this.camera.updateProjectionMatrix();

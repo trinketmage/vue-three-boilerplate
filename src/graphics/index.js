@@ -8,13 +8,11 @@ import Powers from "@/graphics/components/Powers";
 import gsap from "gsap";
 
 export default class {
+  components = {};
+  
   constructor({ canvas }) {
     Input.init();
     Common.init(canvas);
-
-    this.components = {};
-
-    this.renderer = Common.renderer;
 
     this.postprocessing = new PostProcessing();
 
