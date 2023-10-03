@@ -4,7 +4,7 @@
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
-import App from "@/experience/app";
+import App from "@/graphics/index";
 
 export default {
   setup() {

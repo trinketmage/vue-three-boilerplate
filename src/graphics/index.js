@@ -8,20 +8,23 @@ import {
   Object3D
 } from "three";
 
+import Input from "./Input";
+
 import Device from "@/pure/Device";
 import Camera from "./cameras/FreeCamera";
 
-import PostProcessing from "@/experience/postprocessing/index";
+import PostProcessing from "@/graphics/postprocessing/index";
 
-import Powers from "@/experience/components/Powers";
+import Powers from "@/graphics/components/Powers";
 
 import gsap from "gsap";
 
 import { getFovHeigth } from "@trinketmage/sword";
 import settings from "./config";
 
-export default class MainScene {
+export default class {
   constructor({ canvas, initScene = -1 }) {
+    Input.init();
     settings.mouse = new Vector2(0, 0);
     // settings.mouse3d = _ray.origin;
     settings.idx = initScene;
@@ -95,6 +98,7 @@ export default class MainScene {
     });
   }
   render(t) {
+    Input.render();
     Object.keys(this.components).forEach(_ => {
       this.components[_].render(t, this.sizes);
     });

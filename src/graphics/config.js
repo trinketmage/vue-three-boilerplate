@@ -4,9 +4,6 @@ import { Clock } from "@trinketmage/sword";
 export default {
   // color: 0xffffff,
   clock: new Clock(),
-  mousemove: {
-    tween: null
-  },
   intersected: null,
   progress: 1,
   animated: false,

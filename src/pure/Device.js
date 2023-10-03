@@ -1,3 +1,7 @@
 export default {
-  pixelRatio: Math.min(window.devicePixelRatio, 2)
+  viewport: {
+    width: window.innerWidth,
+    height: window.innerHeight,
+  },
+  pixelRatio: Math.min(window.devicePixelRatio, 2),
 }
