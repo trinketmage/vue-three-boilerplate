@@ -1,15 +1,12 @@
 import Input from "./Input";
 import Common from "./Common";
 
-import Camera from "./cameras/FreeCamera";
-
 import PostProcessing from "@/graphics/postprocessing/index";
 
 import Powers from "@/graphics/components/Powers";
 
 import gsap from "gsap";
 
-import { getFovHeigth } from "@trinketmage/sword";
 import settings from "./config";
 
 export default class {
@@ -33,13 +30,9 @@ export default class {
     this.renderer = Common.renderer;
     this.scene = Common.scene;
 
-    this.cameras = [new Camera({ sizes: {
-      width: this.renderer.domElement.parentElement.offsetWidth,
-      height: this.renderer.domElement.parentElement.offsetHeight
-    } })];
-    this.camera = this.cameras[0].instance;
+    this.camera = Common.camera;
 
-    this.scene.add(this.cameras[0].container);
+    this.scene.add(this.camera);
 
     this.postprocessing = new PostProcessing({
       renderer: this.renderer,
@@ -64,42 +57,29 @@ export default class {
   render(t) {
     Input.render();
     Object.keys(this.components).forEach(_ => {
-      this.components[_].render(t, this.sizes);
+      this.components[_].render(t);
     });
     this.postprocessing.render(t);
     // this.cameras[0].render();
     // this.renderer.render(this.scene, this.camera);
   }
   handleResize() {
-    this.camera.aspect =
-      settings.sizes.viewport.width / settings.sizes.viewport.height;
-    this.camera.updateProjectionMatrix();
-    settings.sizes.frustum.height = getFovHeigth(
-      this.camera,
-      3.125
-    );
-    
-    settings.sizes.frustum.width =
-      settings.sizes.frustum.height * this.camera.aspect;
-    this.renderer.setSize(
-      settings.sizes.viewport.width,
-      settings.sizes.viewport.height
-    );
     Object.keys(this.components).forEach(_ => {
-      this.components[_].resize(this.sizes);
+      this.components[_].resize();
     });
     
-    this.postprocessing.handleResize(settings.sizes);
+    Input.resize();
+    Common.resize();
+    this.postprocessing.handleResize();
   }
   destroy() {
     window.removeEventListener("resize", this.x);
-    this.renderer.dispose();
-
-    console.log("CA")
     this.postprocessing.dispose();
-    if (this.cameras[0]) this.cameras[0].dispose();
     Object.keys(this.components).forEach(_ => {
       this.components[_].dispose();
     });
+
+    Input.dispose();
+    Common.dispose();
   }
 }
