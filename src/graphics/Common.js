@@ -6,7 +6,7 @@ class Common {
   scene = new Scene();
 
   constructor() {
-    this.scene.background = new Color(0x10100f);
+    this.scene.background = new Color(0xbebebe);
     this.camera = new PerspectiveCamera(
       50,
       Device.viewport.width / Device.viewport.height,

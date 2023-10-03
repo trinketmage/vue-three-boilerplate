@@ -5,8 +5,6 @@ import Output from "./Ouput";
 import gsap from "gsap";
 
 export default class {
-  components = {};
-  
   constructor({ canvas }) {
     Input.init();
     Common.init(canvas);

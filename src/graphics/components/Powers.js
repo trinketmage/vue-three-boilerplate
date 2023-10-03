@@ -12,7 +12,10 @@ export default class {
   }
   init() {
     const geometry = new BoxGeometry( 2, 2, 2 );
-    const material = new MeshBasicMaterial();
+    const material = new MeshBasicMaterial({
+      color: 0x0f0f0f,
+      wireframe: true,
+    });
 
     this.mesh = new Mesh( geometry, material );
     Common.scene.add( this.mesh );
