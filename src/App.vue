@@ -4,7 +4,7 @@
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
-import App from "@/experience/app";
+import App from "@/graphics/index";
 
 export default {
   setup() {
@@ -41,6 +41,6 @@ canvas {
   width: 100%;
   height: 100%;
   display: block;
-  background-color: red;
+  background-color: black;
 }
 </style>

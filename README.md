@@ -1,4 +1,4 @@
-# powers
+# vue-three-boilerplate
 
 ## Project setup
 ```
