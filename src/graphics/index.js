@@ -7,38 +7,16 @@ import Powers from "@/graphics/components/Powers";
 
 import gsap from "gsap";
 
-import settings from "./config";
-
 export default class {
-  constructor({ canvas, initScene = -1 }) {
+  constructor({ canvas }) {
     Input.init();
     Common.init(canvas);
-    settings.idx = initScene;
 
-    settings.sizes = {
-      viewport: {
-        width: window.innerWidth,
-        height: window.innerHeight
-      },
-      frustum: {
-        height: 0,
-        width: 0
-      }
-    };
     this.components = {};
 
     this.renderer = Common.renderer;
-    this.scene = Common.scene;
 
-    this.camera = Common.camera;
-
-    this.scene.add(this.camera);
-
-    this.postprocessing = new PostProcessing({
-      renderer: this.renderer,
-      scene: this.scene,
-      camera: this.camera
-    });
+    this.postprocessing = new PostProcessing();
 
     this.init();
 
@@ -49,7 +27,7 @@ export default class {
     gsap.ticker.add(this.render.bind(this));
   }
   init() {
-    const { scene } = this;
+    const { scene } = Common;
     this.components.powers = new Powers({
       scene
     });
@@ -60,8 +38,6 @@ export default class {
       this.components[_].render(t);
     });
     this.postprocessing.render(t);
-    // this.cameras[0].render();
-    // this.renderer.render(this.scene, this.camera);
   }
   handleResize() {
     Object.keys(this.components).forEach(_ => {
