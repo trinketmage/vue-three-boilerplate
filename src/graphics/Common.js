@@ -1,6 +1,6 @@
 import Device from "@/pure/Device";
 
-import { Scene, WebGLRenderer, Color, PerspectiveCamera } from "three";
+import { Scene, WebGL1Renderer as WebGLRenderer, Color, PerspectiveCamera } from "three";
 
 class Common {
   scene = new Scene();
@@ -26,6 +26,7 @@ class Common {
       antialias: false
     });
 
+    this.renderer.autoClear = false;
     this.renderer.physicallyCorrectLights = true;
 
     this.renderer.setPixelRatio(Device.pixelRatio);
