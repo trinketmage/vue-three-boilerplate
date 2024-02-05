@@ -12,6 +12,7 @@
     "core-js": "^3.8.3",
     "gsap": "^3.11.4",
     "three": "^0.148.0",
+    "tweakpane": "^4.0.3",
     "vue": "^3.2.13"
   },
   "devDependencies": {

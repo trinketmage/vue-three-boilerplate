@@ -12,6 +12,11 @@ export default class {
     this.output = new Output();
 
     this.init();
+
+    if (Common.debug) {
+      Common.setDebug();
+      this.output.setDebug();
+    }
   }
   init() {
     this.resize();
